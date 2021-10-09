@@ -1,0 +1,62 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local label = Instance.new("TextLabel")
+local beeswarm = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+main.Name = "main"
+main.Parent = ScreenGui
+main.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+main.Position = UDim2.new(0.713015318, 0, 0.487116575, 0)
+main.Size = UDim2.new(0, 342, 0, 379)
+main.Active = true
+main.Draggable = true
+
+label.Name = "label"
+label.Parent = main
+label.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
+label.Size = UDim2.new(0, 342, 0, 50)
+label.Font = Enum.Font.SciFi
+label.Text = "Xenny Hub"
+label.TextColor3 = Color3.fromRGB(255, 255, 255)
+label.TextSize = 26.000
+label.TextWrapped = true
+
+beeswarm.Name = "bee swarm"
+beeswarm.Parent = main
+beeswarm.BackgroundColor3 = Color3.fromRGB(85, 0, 255)
+beeswarm.Position = UDim2.new(0, 0, 0.335092336, 0)
+beeswarm.Size = UDim2.new(0, 200, 0, 50)
+beeswarm.Font = Enum.Font.SciFi
+beeswarm.Text = "Bee Swarm"
+beeswarm.TextColor3 = Color3.fromRGB(255, 255, 255)
+beeswarm.TextSize = 19.000
+beeswarm.MouseButton1Down:connect(function()
+	loadstring(game:GetObjects("rbxassetid://4384103988")[0X1].Source)("Pepsi Swarm")
+end)
+
+-- Scripts:
+
+local function CWLEK_fake_script() -- main.LocalScript 
+	local script = Instance.new('LocalScript', main)
+
+	local frame = script.Parent -- path to the frame
+	local mouse = game:GetService('Players').LocalPlayer:GetMouse(); -- we need the mouse object, which also has the keyboard
+	
+	mouse.KeyDown:connect(function(key) -- whenever a key is pushed down
+		key = key:lower() -- i do this in all my key events, though i don't remember why
+		if key == 'l' then -- if key pressed is h
+			frame.Visible = not frame.Visible -- flip between visible/invisible
+		end
+	end) 
+end
+coroutine.wrap(CWLEK_fake_script)()
